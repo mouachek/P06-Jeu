@@ -62,7 +62,7 @@ function randomnumber() {
 
 for (let i = 0; i < nombreobstacles; i++) {
   const numerocasealeatoire = randomnumber();
-  if (listeCases[numerocasealeatoire].id !== "casevide") {
+  if (listeCases[numerocasealeatoire].id !== "casevide" && "player1" && "player2") {
     i--;
   } else {
     listeCases[numerocasealeatoire].id = "obstacle";
@@ -71,7 +71,7 @@ for (let i = 0; i < nombreobstacles; i++) {
 
 for (let y = 0; y < player1; y++) {
   const numerocasealeatoire = randomnumber();
-  if (listeCases[numerocasealeatoire].id !== "casevide") {
+  if (listeCases[numerocasealeatoire].id !== "casevide" && "obstacle" && "player2") {
     y--;
   } else {
     listeCases[numerocasealeatoire].id = "player1";
@@ -80,7 +80,7 @@ for (let y = 0; y < player1; y++) {
 
 for (let y = 0; y < player2; y++) {
   const numerocasealeatoire = randomnumber();
-  if (listeCases[numerocasealeatoire].id !== "casevide") {
+  if (listeCases[numerocasealeatoire].id !== "casevide" && "obstacle" && "player1") {
     y--;
   } else {
     listeCases[numerocasealeatoire].id = "player2";
