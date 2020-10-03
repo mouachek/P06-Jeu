@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ad8f81f-00d8-41c5-b530-2d798cb27832" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/joueur1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/joueur2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Weapon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Weapon.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,18 +21,30 @@
     </hideBySeverity>
   </component>
   <component name="ProjectId" id="1hdLs3uoXig8ncac2JIy3WEt0kN" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/assets" />
     </key>
   </component>
@@ -45,11 +59,43 @@
       <workItem from="1600336227961" duration="1720000" />
       <workItem from="1600504264064" duration="5000" />
       <workItem from="1600948479487" duration="4561000" />
-      <workItem from="1601554417688" duration="1119000" />
+      <workItem from="1601554417688" duration="1141000" />
+      <workItem from="1601810210860" duration="57000" />
+      <workItem from="1601810290390" duration="17953000" />
+      <workItem from="1602421933174" duration="11064000" />
+      <workItem from="1602761396310" duration="154000" />
+      <workItem from="1602762069919" duration="5051000" />
+      <workItem from="1603041977219" duration="1876000" />
+      <workItem from="1603105791792" duration="1000" />
+      <workItem from="1603361555651" duration="2049000" />
+      <workItem from="1603364031295" duration="1398000" />
+      <workItem from="1604311042789" duration="6000" />
+      <workItem from="1604426948061" duration="4389000" />
+      <workItem from="1605189430864" duration="4751000" />
+      <workItem from="1605449320860" duration="467000" />
+      <workItem from="1605793893984" duration="1421000" />
+      <workItem from="1606070957421" duration="2673000" />
+      <workItem from="1606926708040" duration="5402000" />
+      <workItem from="1607866496480" duration="67000" />
+      <workItem from="1607866591449" duration="9740000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607866601760">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1440.900@0.0.1440.900" timestamp="1607866601760" />
+    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1607877151006">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1607877151006" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1607867972116">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1607867972116" />
   </component>
 </project>
