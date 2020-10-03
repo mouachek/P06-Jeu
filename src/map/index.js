@@ -1,16 +1,17 @@
 export class Map {
     constructor(nbObstacles) {
         this.canvas = document.getElementById('plateau'),
-        this.context = this.canvas.getContext('2d'),
-        this.largeurMax = this.canvas.width, // Largeur max = largeur du canvas
-        this.hauteurMax = this.canvas.height, // Hauteur max = hauteur du canvas
-        this.tailleCase = 60, // Taille d'une case du plateau
-        this.nombreCasesLargeur = this.largeurMax / this.tailleCase, // Le nombre de cases sur la largeur est égale à la largeur du canvas divisée par taille d'une case
-        this.nombreCasesHauteur = this.hauteurMax / this.tailleCase, // Le nombre de cases sur la hauteur est égale à la largeur du canvas divisée par taille d'une case
-        this.nombreCases = this.nombreCasesLargeur * this.nombreCasesHauteur, // Le nombre de cases total est égal aux nombres de cases sur la largeur multipliés par le nombre de cases sur la hauteur
-        this.nombreobstacles = nbObstacles;
+            this.context = this.canvas.getContext('2d'),
+            this.largeurMax = this.canvas.width, // Largeur max = largeur du canvas
+            this.hauteurMax = this.canvas.height, // Hauteur max = hauteur du canvas
+            this.tailleCase = 60, // Taille d'une case du plateau
+            this.nombreCasesLargeur = this.largeurMax / this.tailleCase, // Le nombre de cases sur la largeur est égale à la largeur du canvas divisée par taille d'une case
+            this.nombreCasesHauteur = this.hauteurMax / this.tailleCase, // Le nombre de cases sur la hauteur est égale à la largeur du canvas divisée par taille d'une case
+            this.nombreCases = this.nombreCasesLargeur * this.nombreCasesHauteur, // Le nombre de cases total est égal aux nombres de cases sur la largeur multipliés par le nombre de cases sur la hauteur
+            this.nombreobstacles = nbObstacles;
         this.listeCases = []; // Contient un tableau avec la liste des cases
     }
+}
 
     creeMap() {
         this.context.fillStyle = "white"; // Le canvas a un fond blanc
