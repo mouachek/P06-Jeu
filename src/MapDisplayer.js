@@ -29,7 +29,7 @@ class MapDisplayer {
     drawObstacle(x, y) {
         if (this.#obstacleImage === null) {
             const image = new Image();
-            image.src = './assets/joueur1.png';
+            image.src = './assets/obstacle.png';
             image.addEventListener('load', () => {
                 this.#obstacleImage = image;
                 this.#context.drawImage(this.#obstacleImage, this.#cellSize * x, this.#cellSize * y);
