@@ -1,5 +1,8 @@
 const CELL_TYPES = {
     EMPTYCELL: 'emptyCell',
     OBSTACLE: 'obstacle',
-    PLAYER: 'player',
+    PLAYER1: 'player1',
+    PLAYER2: 'player2',
+    PISTOLET: 'pistolet',
+    MARTEAU: 'marteau',
 }
