@@ -17,4 +17,7 @@ class Obstacle {
     get x() {
         return this.#x;
     }
+    get type() {
+        return this.#type;
+    }
 }

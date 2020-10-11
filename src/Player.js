@@ -1,12 +1,12 @@
 class Player{
-    #typeCell;
+    #type;
     #typePlayer;
     #x;
     #y;
 
     constructor(randomPosition, typePlayer) {
         const position = randomPosition.getPlayerPosition();
-        this.#typeCell = CELL_TYPES.PLAYER;
+        this.#type = CELL_TYPES.PLAYER;
         this.#typePlayer = typePlayer;
         this.#x = position.x;
         this.#y = position.y;
@@ -21,5 +21,8 @@ class Player{
     }
     get typePlayer() {
         return this.#typePlayer;
+    }
+    get type() {
+        return this.#type;
     }
 }
