@@ -7,8 +7,6 @@ class MapDisplayer {
     #obstacleImage = null;
     #player1Image = null;
     #player2Image = null;
-    #pistoletImage = null;
-    #marteauImage = null;
 
     constructor(width, height) {
         this.#canvas = document.getElementById('plateau');
@@ -30,65 +28,43 @@ class MapDisplayer {
         this.#context.strokeRect(this.#cellSize * x, this.#cellSize * y, this.#cellSize, this.#cellSize);
     }
 
-    drawObstacle(x, y) {
+    drawObstacle(newObstacle) {
         if (this.#obstacleImage === null) {
             const image = new Image();
             image.src = './assets/obstacle.png';
             image.addEventListener('load', () => {
                 this.#obstacleImage = image;
-                this.#context.drawImage(this.#obstacleImage, this.#cellSize * x, this.#cellSize * y);
+                this.#context.drawImage(this.#obstacleImage, this.#cellSize * newObstacle.x, this.#cellSize * newObstacle.y);
             }, false);
             return;
         }
-        this.#context.drawImage(this.#obstacleImage, this.#cellSize * x, this.#cellSize * y);
-    }
-    drawPistolet(x, y) {
-        if (this.#pistoletImage === null) {
-            const image = new Image();
-            image.src = './assets/pistolet.png';
-            image.addEventListener('load', () => {
-                this.#pistoletImage = image;
-                this.#context.drawImage(this.#pistoletImage, this.#cellSize * x, this.#cellSize * y);
-            }, false);
-            return;
-        }
-        this.#context.drawImage(this.#pistoletImage, this.#cellSize * x, this.#cellSize * y);
-    }
-    drawMarteau(x, y) {
-        if (this.#marteauImage === null) {
-            const image = new Image();
-            image.src = './assets/marteau.png';
-            image.addEventListener('load', () => {
-                this.#marteauImage = image;
-                this.#context.drawImage(this.#marteauImage, this.#cellSize * x, this.#cellSize * y);
-            }, false);
-            return;
-        }
-        this.#context.drawImage(this.#marteauImage, this.#cellSize * x, this.#cellSize * y);
+        this.#context.drawImage(this.#obstacleImage, this.#cellSize * newObstacle.x, this.#cellSize * newObstacle.y);
     }
 
-    drawPlayer1(x, y) {
-        if (this.#player1Image === null) {
-            const image = new Image();
-            image.src = './assets/joueur1.png';
-            image.addEventListener('load', () => {
-                this.#player1Image = image;
-                this.#context.drawImage(this.#player1Image, this.#cellSize * x, this.#cellSize * y);
-            }, false);
-            return;
+    drawPlayer(newPlayer) {
+        if (newPlayer.typePlayer === PLAYER_TYPE.PLAYER1){
+            if (this.#player1Image === null) {
+                const image = new Image();
+                image.src = './assets/joueur1.png';
+                image.addEventListener('load', () => {
+                    this.#player1Image = image;
+                    this.#context.drawImage(this.#player1Image, this.#cellSize * newPlayer.x, this.#cellSize * newPlayer.y);
+                }, false);
+                return;
+            }
+            this.#context.drawImage(this.#player1Image, this.#cellSize * newPlayer.x, this.#cellSize * newPlayer.y);
+        } else if (newPlayer.typePlayer === PLAYER_TYPE.PLAYER2)
+        {
+            if (this.#player2Image === null) {
+                const image = new Image();
+                image.src = './assets/joueur2.png';
+                image.addEventListener('load', () => {
+                    this.#player2Image = image;
+                    this.#context.drawImage(this.#player2Image, this.#cellSize * newPlayer.x, this.#cellSize * newPlayer.y);
+                }, false);
+                return;
+            }
+            this.#context.drawImage(this.#player2Image, this.#cellSize * newPlayer.x, this.#cellSize * newPlayer.y);
         }
-        this.#context.drawImage(this.#obstacleImage, this.#cellSize * x, this.#cellSize * y);
-    }
-    drawPlayer2(x, y) {
-        if (this.#player2Image === null) {
-            const image = new Image();
-            image.src = './assets/joueur2.png';
-            image.addEventListener('load', () => {
-                this.#player2Image = image;
-                this.#context.drawImage(this.#player2Image, this.#cellSize * x, this.#cellSize * y);
-            }, false);
-            return;
-        }
-        this.#context.drawImage(this.#player2Image, this.#cellSize * x, this.#cellSize * y);
     }
 }

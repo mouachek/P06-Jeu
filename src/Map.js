@@ -44,49 +44,22 @@ class Map {
 
     initObstacles () {
         for (let i = 0; i < this.#nbObstacles; i++){
-            const position = this.#randomPosition.getObstaclePosition();
-            this.#listCells[(position.y * this.#width) + position.x].type=CELL_TYPES.OBSTACLE;
-            this.#mapDisplayer.drawObstacle(position.x, position.y);
-        }
-        console.log(this.#listCells);
-    }
-
-    initPistolet () {
-        for (let i = 0; i < 1; i++){
-            const position = this.#randomPosition.getPistoletPosition();
-            this.#listCells[(position.y * this.#width) + position.x].type=CELL_TYPES.PLAYER2;
-            this.#mapDisplayer.drawPistolet(position.x, position.y);
-        }
-    }
-    initMarteau () {
-        for (let i = 0; i < 1; i++){
-            const position = this.#randomPosition.getmarteauPosition();
-            this.#listCells[(position.y * this.#width) + position.x].type=CELL_TYPES.PLAYER2;
-            this.#mapDisplayer.drawMarteau(position.x, position.y);
+            const newObstacle = new Obstacle(this.#randomPosition)
+            this.#listCells[(newObstacle.y * this.#width) + newObstacle.x] = newObstacle;
+            this.#mapDisplayer.drawObstacle(newObstacle);
         }
     }
 
-    initPlayer1 () {
-        for (let i = 0; i < 1; i++){
-            const position = this.#randomPosition.getPlayer1Position();
-            this.#listCells[(position.y * this.#width) + position.x].type=CELL_TYPES.PLAYER1;
-            this.#mapDisplayer.drawPlayer1(position.x, position.y);
-        }
-    }
-    initPlayer2 () {
-        for (let i = 0; i < 1; i++){
-            const position = this.#randomPosition.getPlayer2Position();
-            this.#listCells[(position.y * this.#width) + position.x].type=CELL_TYPES.PLAYER2;
-            this.#mapDisplayer.drawPlayer2(position.x, position.y);
-        }
+    initPlayer (typePlayer) {
+        const newPlayer = new Player(this.#randomPosition, typePlayer)
+        this.#listCells[(newPlayer.y * this.#width) + newPlayer.x] = newPlayer;
+        this.#mapDisplayer.drawPlayer(newPlayer);
     }
 
     createMap() {
         this.initBoard()
         this.initObstacles();
-        this.initPlayer1();
-        this.initPlayer2();
-        this.initPistolet();
-        this.initMarteau();
+        this.initPlayer(PLAYER_TYPE.PLAYER1);
+        this.initPlayer(PLAYER_TYPE.PLAYER2);
     }
 }

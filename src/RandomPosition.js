@@ -9,64 +9,56 @@ class RandomPosition {
         this.#height = height;
     }
 
+    checkBoundaries(position) {
+        return position >= 0 && position < this.#width * this.#height;
+    }
+
+    checkDirection(x, y, direction, cell) {
+        if (direction === DIRECTION_TYPES.UP
+        && this.checkBoundaries(((y - 1) * this.#width) + x)) {
+            return this.#listCells[((y - 1) * this.#width) + x].type === cell
+        }
+        if (direction === DIRECTION_TYPES.DOWN && this.checkBoundaries(((y + 1) * this.#width) + x)) {
+            return this.#listCells[((y + 1) * this.#width) + x].type === cell
+        }
+        if (direction === DIRECTION_TYPES.RIGHT && this.checkBoundaries((y * this.#width) + x + 1)){
+            return this.#listCells[(y * this.#width) + x + 1].type === cell
+        }
+        if (direction === DIRECTION_TYPES.LEFT && this.checkBoundaries(y * this.#width) + x - 1)
+        {
+            return this.#listCells[(y * this.#width) + x - 1].type === cell
+        }
+        if (direction === DIRECTION_TYPES.CURRENT)
+        {
+            return this.#listCells[(y * this.#width) + x].type === cell
+        }
+
+        return false;
+    }
+
     getObstaclePosition () {
         const x = Math.floor(Math.random() * (this.#width));
         const y = Math.floor(Math.random() * (this.#height));
-        if (this.#listCells[(y * this.#width) + x].type === CELL_TYPES.EMPTYCELL)
+        if (this.checkDirection(x, y, DIRECTION_TYPES.CURRENT, CELL_TYPES.EMPTYCELL))
         {
             return {x,y};
         }
         return this.getObstaclePosition();
     }
-    getPistoletPosition () {
-        const x = Math.floor(Math.random() * (this.#width));
-        const y = Math.floor(Math.random() * (this.#height));
-        if (
-            this.#listCells[(y * this.#width) + x].type === CELL_TYPES.EMPTYCELL
-        )
-        {
-            return {x,y};
-        }
-        return this.getPistoletPosition();
-    }
-    getmarteauPosition () {
-        const x = Math.floor(Math.random() * (this.#width));
-        const y = Math.floor(Math.random() * (this.#height));
-        if (
-            this.#listCells[(y * this.#width) + x].type === CELL_TYPES.EMPTYCELL
-        )
-        {
-            return {x,y};
-        }
-        return this.getmarteauPosition();
-    }
 
-    getPlayer1Position () {
+    getPlayerPosition () {
         const x = Math.floor(Math.random() * (this.#width));
         const y = Math.floor(Math.random() * (this.#height));
-        if (this.#listCells[(y * this.#width) + x].type === CELL_TYPES.EMPTYCELL
-            &&  this.#listCells[(y * this.#width) + x - 1].type !== CELL_TYPES.PLAYER2
-            &&  this.#listCells[(y * this.#width) + x + 1].type !== CELL_TYPES.PLAYER2
-            && this.#listCells[((y - 1) * this.#width) + x].type !== CELL_TYPES.PLAYER2
-            && this.#listCells[((y + 1) * this.#width) + x].type !== CELL_TYPES.PLAYER2
-        )
-        {            return {x,y};
-        }
-        return this.getPlayer1Position();
-    }
-    getPlayer2Position () {
-        const x = Math.floor(Math.random() * (this.#width));
-        const y = Math.floor(Math.random() * (this.#height));
-        if (
-            this.#listCells[(y * this.#width) + x].type === CELL_TYPES.EMPTYCELL
-            &&  this.#listCells[(y * this.#width) + x - 1].type !== CELL_TYPES.PLAYER1
-            &&  this.#listCells[(y * this.#width) + x + 1].type !== CELL_TYPES.PLAYER1
-            && this.#listCells[((y - 1) * this.#width) + x].type !== CELL_TYPES.PLAYER1
-            && this.#listCells[((y + 1) * this.#width) + x].type !== CELL_TYPES.PLAYER1
+        console.log(x, y);
+        if (this.checkDirection(x, y, DIRECTION_TYPES.CURRENT, CELL_TYPES.EMPTYCELL)
+            && !this.checkDirection(x, y, DIRECTION_TYPES.LEFT, CELL_TYPES.PLAYER)
+            && !this.checkDirection(x, y, DIRECTION_TYPES.RIGHT, CELL_TYPES.PLAYER)
+            && !this.checkDirection(x, y, DIRECTION_TYPES.UP, CELL_TYPES.PLAYER)
+            && !this.checkDirection(x, y, DIRECTION_TYPES.DOWN, CELL_TYPES.PLAYER)
         )
         {
             return {x,y};
         }
-        return this.getPlayer2Position();
+        return this.getPlayerPosition();
     }
 }
