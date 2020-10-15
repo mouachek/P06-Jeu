@@ -56,10 +56,19 @@ class Map {
         this.#mapDisplayer.drawPlayer(newPlayer);
     }
 
+    initWeapon (typeWeapon) {
+        const newWeapon = new Weapon(this.#randomPosition, typeWeapon)
+        this.#listCells[(newWeapon.y * this.#width) + newWeapon.x] = newWeapon;
+        this.#mapDisplayer.drawWeapon(newWeapon);
+    }
+
     createMap() {
         this.initBoard()
         this.initObstacles();
         this.initPlayer(PLAYER_TYPE.PLAYER1);
         this.initPlayer(PLAYER_TYPE.PLAYER2);
+        this.initWeapon(WEAPON_TYPE.WEAPON1);
+        this.initWeapon(WEAPON_TYPE.WEAPON2);
+        this.initWeapon(WEAPON_TYPE.WEAPON3);
     }
 }

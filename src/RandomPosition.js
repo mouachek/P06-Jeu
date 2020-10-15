@@ -61,4 +61,14 @@ class RandomPosition {
         }
         return this.getPlayerPosition();
     }
+
+    getWeaponPosition () {
+        const x = Math.floor(Math.random() * (this.#width));
+        const y = Math.floor(Math.random() * (this.#height));
+        if (this.checkDirection(x, y, DIRECTION_TYPES.CURRENT, CELL_TYPES.EMPTYCELL))
+        {
+            return {x,y};
+        }
+        return this.getWeaponPosition();
+    }
 }
