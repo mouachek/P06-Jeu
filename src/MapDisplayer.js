@@ -48,7 +48,7 @@ class MapDisplayer {
         if (newPlayer.typePlayer === PLAYER_TYPE.PLAYER1) {
             if (this.#player1Image === null) {
                 const image = new Image();
-                image.src = './assets/joueur1.png';
+                image.src = './assets/player1.png';
                 image.addEventListener('load', () => {
                     this.#player1Image = image;
                     this.#context.drawImage(this.#player1Image, this.#cellSize * newPlayer.x, this.#cellSize * newPlayer.y);
@@ -59,7 +59,7 @@ class MapDisplayer {
         } else if (newPlayer.typePlayer === PLAYER_TYPE.PLAYER2) {
             if (this.#player2Image === null) {
                 const image = new Image();
-                image.src = './assets/joueur2.png';
+                image.src = './assets/player2.png';
                 image.addEventListener('load', () => {
                     this.#player2Image = image;
                     this.#context.drawImage(this.#player2Image, this.#cellSize * newPlayer.x, this.#cellSize * newPlayer.y);

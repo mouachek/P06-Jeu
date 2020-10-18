@@ -1,6 +1,6 @@
 // On crée les variables pour le canvas
 
-const map = new Map(10, 10, 6);
+const map = new Map(10, 10, 8);
 map.createMap();
 
 
@@ -48,7 +48,7 @@ for (let y = 0; y < nombreCases; y++) {
     if (listeCases[y].id === "player1") {
       console.log(listeCases[y].positionX + "/" + listeCases[y].positionY);
       const canvas = new Image();
-      canvas.src = "./assets/joueur1.png";
+      canvas.src = "./assets/player1.png";
       canvas.addEventListener('load', function() {
         context.drawImage(canvas, listeCases[y].positionX, listeCases[y].positionY);
       }, false);
@@ -56,7 +56,7 @@ for (let y = 0; y < nombreCases; y++) {
     else if (listeCases[y].id === "player2") {
       console.log(listeCases[y].positionX + "/" + listeCases[y].positionY);
       const canvas = new Image();
-      canvas.src = "./assets/joueur2.png";
+      canvas.src = "./assets/player2.png";
       canvas.addEventListener('load', function() {
         context.drawImage(canvas, listeCases[y].positionX, listeCases[y].positionY);
       }, false);
