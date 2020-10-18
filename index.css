@@ -3,7 +3,7 @@
 body {
     font-family: "Permanent Marker", sans-serif;
     height: 100vh;
-    background-image: url("./assets/test1.png");
+    background-image: url("./assets/bg.png");
     background-size: cover;
 }
 

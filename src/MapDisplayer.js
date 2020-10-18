@@ -22,12 +22,12 @@ class MapDisplayer {
     }
 
     drawBackground() {
-        this.#context.fillStyle = "white"; // Le canvas a un fond blanc
+        this.#context.fillStyle = "rgba(255, 255, 255, 0.5)"; // Le canvas a un fond blanc
         this.#context.fillRect(0, 0, this.#width, this.#height); // On utilise la totalité du canvas pour créer nos cases
     }
 
     drawBorder(x, y) {
-        this.#context.strokeStyle = 'grey';
+        this.#context.strokeStyle = "rgba(255, 255, 255, 0.5)";
         this.#context.strokeRect(this.#cellSize * x, this.#cellSize * y, this.#cellSize, this.#cellSize);
     }
 
