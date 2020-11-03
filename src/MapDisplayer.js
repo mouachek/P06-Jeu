@@ -10,6 +10,7 @@ class MapDisplayer {
     #weapon1Image = null;
     #weapon2Image = null;
     #weapon3Image = null;
+    #moveImage = null;
 
     constructor(width, height) {
         this.#canvas = document.getElementById('plateau');
@@ -107,5 +108,18 @@ class MapDisplayer {
             }
             this.#context.drawImage(this.#weapon3Image, this.#cellSize * newWeapon.x, this.#cellSize * newWeapon.y);
         }
+    }
+
+    drawMove(newMove) {
+        if (this.#moveImage === null) {
+            const image = new Image();
+            image.src = './assets/cellMove.png';
+            image.addEventListener('load', () => {
+                this.#moveImage = image;
+                this.#context.drawImage(this.#moveImage, this.#cellSize * newMove.x, this.#cellSize * newMove.y);
+            }, false);
+            return;
+        }
+        this.#context.drawImage(this.#moveImage, this.#cellSize * newMove.x, this.#cellSize * newMove.y);
     }
 }

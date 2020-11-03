@@ -3,6 +3,7 @@ const CELL_TYPES = {
     OBSTACLE: 'obstacle',
     PLAYER: 'player',
     WEAPON: 'weapon',
+    MOVE: 'move',
 }
 
 const DIRECTION_TYPES = {

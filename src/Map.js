@@ -54,6 +54,7 @@ class Map {
         const newPlayer = new Player(this.#randomPosition, typePlayer)
         this.#listCells[(newPlayer.y * this.#width) + newPlayer.x] = newPlayer;
         this.#mapDisplayer.drawPlayer(newPlayer);
+        return newPlayer;
     }
 
     initWeapon (typeWeapon) {
@@ -62,13 +63,47 @@ class Map {
         this.#mapDisplayer.drawWeapon(newWeapon);
     }
 
+    initMoves (player) {
+        for(let i = 1; i <= 3; i++) {
+            const newMove = new Move(player.x, player.y - i)
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL)
+            {
+                this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
+                this.#mapDisplayer.drawMove(newMove);
+            }
+        }
+        for(let i = 1; i <= 3; i++) {
+            const newMove = new Move(player.x, player.y + i)
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL) {
+                this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
+                this.#mapDisplayer.drawMove(newMove);
+            }
+        }
+        for(let i = 1; i <= 3; i++) {
+            const newMove = new Move(player.x - i, player.y)
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL) {
+                    this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
+                    this.#mapDisplayer.drawMove(newMove);
+            }
+        }
+        for(let i = 1; i <= 3; i++) {
+            const newMove = new Move(player.x + i, player.y)
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL) {
+                this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
+                this.#mapDisplayer.drawMove(newMove);
+            }
+        }
+    }
+
     createMap() {
         this.initBoard()
         this.initObstacles();
-        this.initPlayer(PLAYER_TYPE.PLAYER1);
+        const player1 = this.initPlayer(PLAYER_TYPE.PLAYER1);
         this.initPlayer(PLAYER_TYPE.PLAYER2);
         this.initWeapon(WEAPON_TYPE.WEAPON1);
         this.initWeapon(WEAPON_TYPE.WEAPON2);
         this.initWeapon(WEAPON_TYPE.WEAPON3);
+        this.initMoves(player1);
+        console.log(this.#listCells);
     }
 }
