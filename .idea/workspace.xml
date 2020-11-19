@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ad8f81f-00d8-41c5-b530-2d798cb27832" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Move.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/player1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/player1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/player2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/player2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MapDisplayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapDisplayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/CellTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/CellTypes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +68,10 @@
       <workItem from="1603361555651" duration="2049000" />
       <workItem from="1603364031295" duration="1398000" />
       <workItem from="1604311042789" duration="6000" />
-      <workItem from="1604426948061" duration="4229000" />
+      <workItem from="1604426948061" duration="4389000" />
+      <workItem from="1605189430864" duration="4751000" />
+      <workItem from="1605449320860" duration="467000" />
+      <workItem from="1605793893984" duration="1302000" />
     </task>
     <servers />
   </component>
@@ -82,10 +79,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1602429738070">
+    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1605193273967">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1602429738070" />
+    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1605193273967" />
     <state x="385" y="196" key="search.everywhere.popup" timestamp="1602425020235">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

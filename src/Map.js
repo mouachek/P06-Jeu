@@ -6,6 +6,7 @@ class Map {
     #listCells;
     #curListIndex = 0;
     #width;
+    #height;
 
     constructor(width, height, nbObstacles) {
         this.#mapDisplayer = new MapDisplayer(width, height);
@@ -14,6 +15,7 @@ class Map {
         this.#nbCells = width * height;
         this.#nbObstacles = nbObstacles;
         this.#width = width;
+        this.#height = height;
     }
 
     addCell (x, y, type) {
@@ -63,6 +65,10 @@ class Map {
         this.#mapDisplayer.drawWeapon(newWeapon);
     }
 
+    checkBoundaries(position) {
+        return position >= 0 && position < this.#width * this.#height;
+    }
+
     initMoves (player) {
         for(let i = 1; i <= 3; i++) {
             const newMove = new Move(player.x, player.y - i)
@@ -71,26 +77,46 @@ class Map {
                 this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
                 this.#mapDisplayer.drawMove(newMove);
             }
+            if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
+                || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)
+            {
+                break;
+            }
         }
         for(let i = 1; i <= 3; i++) {
             const newMove = new Move(player.x, player.y + i)
-            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL) {
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL)
+            {
                 this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
                 this.#mapDisplayer.drawMove(newMove);
+            }
+            if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
+                || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
+                break;
             }
         }
         for(let i = 1; i <= 3; i++) {
             const newMove = new Move(player.x - i, player.y)
-            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL) {
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL)
+            {
                     this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
                     this.#mapDisplayer.drawMove(newMove);
+            }
+            if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
+                || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
+                break;
             }
         }
         for(let i = 1; i <= 3; i++) {
             const newMove = new Move(player.x + i, player.y)
-            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL) {
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL)
+            {
                 this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
                 this.#mapDisplayer.drawMove(newMove);
+            }
+            if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
+                || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
+                break;
             }
         }
     }
