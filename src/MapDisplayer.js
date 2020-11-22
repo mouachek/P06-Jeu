@@ -20,6 +20,14 @@ class MapDisplayer {
         this.#height = height * this.#cellSize;
         this.#canvas.width = this.#width;
         this.#canvas.height = this.#height;
+        this.#canvas.addEventListener('click', this.onClick.bind(this), false);
+    }
+
+    onClick(e){
+        const x = Math.ceil(e.layerX / this.#cellSize);
+        const y = Math.ceil(e.layerY / this.#cellSize);
+        //this.movePlayer(x, y)
+        console.log(x, y);
     }
 
     drawBackground() {

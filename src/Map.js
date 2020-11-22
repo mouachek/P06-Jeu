@@ -71,6 +71,9 @@ class Map {
 
     initMoves (player) {
         for(let i = 1; i <= 3; i++) {
+            if (player.y - i < 0){
+                break;
+            }
             const newMove = new Move(player.x, player.y - i)
             if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL)
             {
@@ -84,6 +87,9 @@ class Map {
             }
         }
         for(let i = 1; i <= 3; i++) {
+            if (player.y + i >= this.#height){
+                break;
+            }
             const newMove = new Move(player.x, player.y + i)
             if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL)
             {
@@ -96,6 +102,9 @@ class Map {
             }
         }
         for(let i = 1; i <= 3; i++) {
+            if (player.x - i < 0){
+                break;
+            }
             const newMove = new Move(player.x - i, player.y)
             if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL)
             {
@@ -108,6 +117,9 @@ class Map {
             }
         }
         for(let i = 1; i <= 3; i++) {
+            if (player.x + i >= this.#width){
+                break;
+            }
             const newMove = new Move(player.x + i, player.y)
             if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.EMPTYCELL)
             {
