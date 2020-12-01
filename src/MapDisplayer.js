@@ -26,7 +26,6 @@ class MapDisplayer {
     onClick(e){
         const x = Math.ceil(e.layerX / this.#cellSize);
         const y = Math.ceil(e.layerY / this.#cellSize);
-        //this.movePlayer(x, y)
         console.log(x, y);
     }
 

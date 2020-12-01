@@ -7,6 +7,8 @@ class Map {
     #curListIndex = 0;
     #width;
     #height;
+    #currentPlayer;
+    #currentEnemy;
 
     constructor(width, height, nbObstacles) {
         this.#mapDisplayer = new MapDisplayer(width, height);
@@ -16,6 +18,17 @@ class Map {
         this.#nbObstacles = nbObstacles;
         this.#width = width;
         this.#height = height;
+    }
+
+    setNextTurn() {
+        if (this.currentPlayer == PLAYER_TYPE.PLAYER1){
+            this.currentPlayer = PLAYER_TYPE.PLAYER2;
+            this.currentEnemy = PLAYER_TYPE.PLAYER1;
+        }
+        else if (this.currentPlayer == PLAYER_TYPE.PLAYER2) {
+            this.currentPlayer = PLAYER_TYPE.PLAYER1;
+            this.currentEnemy = PLAYER_TYPE.PLAYER2;
+        }
     }
 
     addCell (x, y, type) {
@@ -63,10 +76,6 @@ class Map {
         const newWeapon = new Weapon(this.#randomPosition, typeWeapon)
         this.#listCells[(newWeapon.y * this.#width) + newWeapon.x] = newWeapon;
         this.#mapDisplayer.drawWeapon(newWeapon);
-    }
-
-    checkBoundaries(position) {
-        return position >= 0 && position < this.#width * this.#height;
     }
 
     initMoves (player) {
