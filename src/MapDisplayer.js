@@ -11,8 +11,10 @@ class MapDisplayer {
     #weapon2Image = null;
     #weapon3Image = null;
     #moveImage = null;
+    #map;
 
-    constructor(width, height) {
+    constructor(width, height, map) {
+        this.#map = map;
         this.#canvas = document.getElementById('plateau');
         this.#context = this.#canvas.getContext('2d');
         this.#cellSize = 60;
@@ -23,13 +25,36 @@ class MapDisplayer {
         this.#canvas.addEventListener('click', this.onClick.bind(this), false);
     }
 
+    drawMap(listCells) {
+        this.drawBackground();
+
+        for (let i = 0; i < listCells.length; i++) {
+            this.drawBorder(listCells[i].x, listCells[i].y);
+            switch (listCells[i].type) {
+                case CELL_TYPES.OBSTACLE:
+                    this.drawObstacle(listCells[i]);
+                    break;
+                case CELL_TYPES.PLAYER:
+                    this.drawPlayer(listCells[i])
+                    break;
+                case CELL_TYPES.MOVE:
+                    this.drawMove(listCells[i])
+                    break;
+                case CELL_TYPES.WEAPON:
+                    this.drawWeapon(listCells[i])
+                    break;
+            }
+        }
+    }
+
     onClick(e){
-        const x = Math.ceil(e.layerX / this.#cellSize);
-        const y = Math.ceil(e.layerY / this.#cellSize);
-        console.log(x, y);
+        const x = Math.floor(e.layerX / this.#cellSize);
+        const y = Math.floor(e.layerY / this.#cellSize);
+        this.#map.moveCurrentPlayer(x, y);
     }
 
     drawBackground() {
+        this.#context.clearRect(0, 0, this.#width, this.#height);
         this.#context.fillStyle = "rgba(255, 255, 255, 0.5)"; // Le canvas a un fond blanc
         this.#context.fillRect(0, 0, this.#width, this.#height); // On utilise la totalité du canvas pour créer nos cases
     }

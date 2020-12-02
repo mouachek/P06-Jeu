@@ -8,10 +8,10 @@ class Map {
     #width;
     #height;
     #currentPlayer;
-    #currentEnemy;
+    #players;
 
     constructor(width, height, nbObstacles) {
-        this.#mapDisplayer = new MapDisplayer(width, height);
+        this.#mapDisplayer = new MapDisplayer(width, height, this);
         this.#listCells = [];
         this.#randomPosition = new RandomPosition(this.#listCells, width, height);
         this.#nbCells = width * height;
@@ -20,16 +20,16 @@ class Map {
         this.#height = height;
     }
 
-    setNextTurn() {
-        if (this.currentPlayer == PLAYER_TYPE.PLAYER1){
-            this.currentPlayer = PLAYER_TYPE.PLAYER2;
-            this.currentEnemy = PLAYER_TYPE.PLAYER1;
-        }
-        else if (this.currentPlayer == PLAYER_TYPE.PLAYER2) {
-            this.currentPlayer = PLAYER_TYPE.PLAYER1;
-            this.currentEnemy = PLAYER_TYPE.PLAYER2;
-        }
-    }
+    // setNextTurn() {
+    //     if (this.currentPlayer == PLAYER_TYPE.PLAYER1){
+    //         this.currentPlayer = PLAYER_TYPE.PLAYER2;
+    //         this.currentEnemy = PLAYER_TYPE.PLAYER1;
+    //     }
+    //     else if (this.currentPlayer == PLAYER_TYPE.PLAYER2) {
+    //         this.currentPlayer = PLAYER_TYPE.PLAYER1;
+    //         this.currentEnemy = PLAYER_TYPE.PLAYER2;
+    //     }
+    // }
 
     addCell (x, y, type) {
         this.#listCells[this.#curListIndex] = {
@@ -142,15 +142,43 @@ class Map {
         }
     }
 
+    moveCurrentPlayer (x, y) {
+        const oldX = this.#currentPlayer.x;
+        const oldY = this.#currentPlayer.y;
+        this.#currentPlayer.move(x, y);
+        this.#listCells[(y * this.#width) + x] = this.#currentPlayer;
+        this.#listCells[(oldY * this.#width) + oldX] = {
+            cellId: this.#listCells[(oldY * this.#width) + oldX].cellId,
+            type: CELL_TYPES.EMPTYCELL,
+            x: oldX,
+            y: oldY,
+        };
+        for(let i = 0; i < this.#listCells.length; i++){
+            if (this.#listCells[i].type === CELL_TYPES.MOVE){
+                this.#listCells[i] = {
+                    cellId: this.#listCells[i].cellId,
+                    type: CELL_TYPES.EMPTYCELL,
+                    x: this.#listCells[i].x,
+                    y: this.#listCells[i].y,
+                };
+            }
+        }
+        this.#mapDisplayer.drawMap(this.#listCells);
+        this.#currentPlayer = this.#currentPlayer.typePlayer === PLAYER_TYPE.PLAYER1 ? this.#players[1] : this.#players[0];
+        console.log(this.#players);
+        this.initMoves(this.#currentPlayer);
+        this.#mapDisplayer.drawMap(this.#listCells);
+    }
+
     createMap() {
         this.initBoard()
         this.initObstacles();
-        const player1 = this.initPlayer(PLAYER_TYPE.PLAYER1);
-        this.initPlayer(PLAYER_TYPE.PLAYER2);
+        this.#players = [this.initPlayer(PLAYER_TYPE.PLAYER1), this.initPlayer(PLAYER_TYPE.PLAYER2)];
+        this.#currentPlayer = this.#players[0];
         this.initWeapon(WEAPON_TYPE.WEAPON1);
         this.initWeapon(WEAPON_TYPE.WEAPON2);
         this.initWeapon(WEAPON_TYPE.WEAPON3);
-        this.initMoves(player1);
+        this.initMoves(this.#currentPlayer);
         console.log(this.#listCells);
     }
 }

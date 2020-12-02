@@ -12,6 +12,11 @@ class Player{
         this.#y = position.y;
     }
 
+    move(x, y){
+        this.#x = x;
+        this.#y = y;
+    }
+
     get y() {
         return this.#y;
     }
