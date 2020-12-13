@@ -6,6 +6,7 @@ class Player{
     #positionManager;
     #weapon;
     #oldWeapon;
+    #lifePoint;
 
     constructor(positionManager, typePlayer) {
         const position = positionManager.getPlayerPosition();
@@ -16,6 +17,7 @@ class Player{
         this.#positionManager = positionManager;
         this.#weapon = new Weapon(null, WEAPON_TYPE.WEAPON0, this.#x, this.#y)
         this.#oldWeapon = null;
+        this.#lifePoint = 100;
     }
 
     move(x, y){

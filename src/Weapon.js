@@ -2,6 +2,7 @@ class Weapon {
     #type;
     #typeWeapon;
     #isPickable;
+    #damage;
     #x;
     #y;
 
@@ -19,6 +20,21 @@ class Weapon {
         this.#typeWeapon = typeWeapon;
 
         this.#isPickable = false;
+
+        switch (this.typeWeapon) {
+            case WEAPON_TYPE.WEAPON0:
+                this.#damage = 10;
+                break;
+            case WEAPON_TYPE.WEAPON1:
+                this.#damage = 20;
+                break;
+            case WEAPON_TYPE.WEAPON2:
+                this.#damage = 30;
+                break;
+            case WEAPON_TYPE.WEAPON3:
+                this.#damage = 40;
+                break;
+        }
     }
 
     clone() {
