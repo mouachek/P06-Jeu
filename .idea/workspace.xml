@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2ad8f81f-00d8-41c5-b530-2d798cb27832" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MapDisplayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapDisplayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Obstacle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Obstacle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RandomPosition.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PositionManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Weapon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Weapon.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +79,8 @@
       <workItem from="1605793893984" duration="1421000" />
       <workItem from="1606070957421" duration="2673000" />
       <workItem from="1606926708040" duration="5402000" />
+      <workItem from="1607866496480" duration="67000" />
+      <workItem from="1607866591449" duration="2742000" />
     </task>
     <servers />
   </component>
@@ -83,13 +88,17 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1605193273967">
+    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607866601760">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1605193273967" />
-    <state x="385" y="196" key="search.everywhere.popup" timestamp="1602425020235">
+    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1440.900@0.0.1440.900" timestamp="1607866601760" />
+    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1607868164644">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1602425020235" />
+    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1607868164644" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1607867972116">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1607867972116" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 class Map {
     #mapDisplayer;
-    #randomPosition;
+    #positionManager;
     #nbCells;
     #nbObstacles;
     #listCells;
@@ -13,7 +13,7 @@ class Map {
     constructor(width, height, nbObstacles) {
         this.#mapDisplayer = new MapDisplayer(width, height, this);
         this.#listCells = [];
-        this.#randomPosition = new RandomPosition(this.#listCells, width, height);
+        this.#positionManager = new PositionManager(this.#listCells, width, height);
         this.#nbCells = width * height;
         this.#nbObstacles = nbObstacles;
         this.#width = width;
@@ -59,21 +59,21 @@ class Map {
 
     initObstacles () {
         for (let i = 0; i < this.#nbObstacles; i++){
-            const newObstacle = new Obstacle(this.#randomPosition)
+            const newObstacle = new Obstacle(this.#positionManager)
             this.#listCells[(newObstacle.y * this.#width) + newObstacle.x] = newObstacle;
             this.#mapDisplayer.drawObstacle(newObstacle);
         }
     }
 
     initPlayer (typePlayer) {
-        const newPlayer = new Player(this.#randomPosition, typePlayer)
+        const newPlayer = new Player(this.#positionManager, typePlayer)
         this.#listCells[(newPlayer.y * this.#width) + newPlayer.x] = newPlayer;
         this.#mapDisplayer.drawPlayer(newPlayer);
         return newPlayer;
     }
 
     initWeapon (typeWeapon) {
-        const newWeapon = new Weapon(this.#randomPosition, typeWeapon)
+        const newWeapon = new Weapon(this.#positionManager, typeWeapon)
         this.#listCells[(newWeapon.y * this.#width) + newWeapon.x] = newWeapon;
         this.#mapDisplayer.drawWeapon(newWeapon);
     }
@@ -142,9 +142,25 @@ class Map {
         }
     }
 
+    // switchWeapon() {
+    //     for (let x = 0; x < this.#listCells.length; x++) {
+    //         for (let y = 0; y < this.#listCells.length; y++) {
+    //             if (this.#listCells.length[x][y] === this.#currentPlayer.move(x, y) && this.#listCells.length.weapon != null) {
+    //                 let weaponBuffer = this.#listCells.length[x][y].weapon;
+    //                 this.#listCells.length[x][y].weapon = this.#currentPlayer.weapon;
+    //                 this.#currentPlayer.weapon = weaponBuffer;
+    //             }
+    //         }
+    //     }
+    // }
+
     moveCurrentPlayer (x, y) {
         const oldX = this.#currentPlayer.x;
         const oldY = this.#currentPlayer.y;
+
+        if (!this.#currentPlayer.canMoveTo(x, y)){
+            return false;
+        }
         this.#currentPlayer.move(x, y);
         this.#listCells[(y * this.#width) + x] = this.#currentPlayer;
         this.#listCells[(oldY * this.#width) + oldX] = {
@@ -163,7 +179,6 @@ class Map {
                 };
             }
         }
-        this.#mapDisplayer.drawMap(this.#listCells);
         this.#currentPlayer = this.#currentPlayer.typePlayer === PLAYER_TYPE.PLAYER1 ? this.#players[1] : this.#players[0];
         console.log(this.#players);
         this.initMoves(this.#currentPlayer);

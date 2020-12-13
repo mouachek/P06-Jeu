@@ -1,4 +1,4 @@
-class RandomPosition {
+class PositionManager {
     #listCells;
     #width;
     #height;
@@ -9,24 +9,28 @@ class RandomPosition {
         this.#height = height;
     }
 
+    checkCellType(x, y, typeCell) {
+        return this.#listCells[(y * this.#width) + x].type === typeCell
+    }
+
     checkBoundaries(position) {
         return position >= 0 && position < this.#width * this.#height;
     }
 
-    checkDirection(x, y, direction, cell) {
+    checkDirection(x, y, direction, cell, distance = 1) {
         if (direction === DIRECTION_TYPES.UP
-        && this.checkBoundaries(((y - 1) * this.#width) + x)) {
-            return this.#listCells[((y - 1) * this.#width) + x].type === cell
+        && this.checkBoundaries(((y - distance) * this.#width) + x)) {
+            return this.#listCells[((y - distance) * this.#width) + x].type === cell
         }
-        if (direction === DIRECTION_TYPES.DOWN && this.checkBoundaries(((y + 1) * this.#width) + x)) {
-            return this.#listCells[((y + 1) * this.#width) + x].type === cell
+        if (direction === DIRECTION_TYPES.DOWN && this.checkBoundaries(((y + distance) * this.#width) + x)) {
+            return this.#listCells[((y + distance) * this.#width) + x].type === cell
         }
-        if (direction === DIRECTION_TYPES.RIGHT && this.checkBoundaries((y * this.#width) + x + 1)){
-            return this.#listCells[(y * this.#width) + x + 1].type === cell
+        if (direction === DIRECTION_TYPES.RIGHT && this.checkBoundaries((y * this.#width) + x + distance)){
+            return this.#listCells[(y * this.#width) + x + distance].type === cell
         }
-        if (direction === DIRECTION_TYPES.LEFT && this.checkBoundaries(y * this.#width) + x - 1)
+        if (direction === DIRECTION_TYPES.LEFT && this.checkBoundaries(y * this.#width) + x - distance)
         {
-            return this.#listCells[(y * this.#width) + x - 1].type === cell
+            return this.#listCells[(y * this.#width) + x - distance].type === cell
         }
         if (direction === DIRECTION_TYPES.CURRENT)
         {

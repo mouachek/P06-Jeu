@@ -3,8 +3,8 @@ class Obstacle {
     #x;
     #y;
 
-    constructor(randomPosition) {
-        const position = randomPosition.getObstaclePosition();
+    constructor(positionManager) {
+        const position = positionManager.getObstaclePosition();
         this.#type = CELL_TYPES.OBSTACLE;
         this.#x = position.x;
         this.#y = position.y;

@@ -4,8 +4,8 @@ class Weapon {
     #x;
     #y;
 
-    constructor(randomPosition, typeWeapon) {
-        const position = randomPosition.getWeaponPosition();
+    constructor(positionManager, typeWeapon) {
+        const position = positionManager.getWeaponPosition();
         this.#type = CELL_TYPES.WEAPON;
         this.#typeWeapon = typeWeapon;
         this.#x = position.x;
