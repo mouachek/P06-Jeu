@@ -66,6 +66,10 @@ class PositionManager {
         return this.getPlayerPosition();
     }
 
+    getCell(x, y){
+        return this.#listCells[(y * this.#width) + x]
+    }
+
     getWeaponPosition () {
         const x = Math.floor(Math.random() * (this.#width));
         const y = Math.floor(Math.random() * (this.#height));

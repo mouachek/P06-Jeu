@@ -5,6 +5,7 @@ class MapDisplayer {
     #height;
     #cellSize;
     #obstacleImage = null;
+    #weapon0Image = null;
     #player1Image = null;
     #player2Image = null;
     #weapon1Image = null;
@@ -41,6 +42,7 @@ class MapDisplayer {
                     this.drawMove(listCells[i])
                     break;
                 case CELL_TYPES.WEAPON:
+                    console.log(' GONNA DRAW', listCells[i]);
                     this.drawWeapon(listCells[i])
                     break;
             }
@@ -104,6 +106,18 @@ class MapDisplayer {
     }
 
     drawWeapon(newWeapon) {
+        if (newWeapon.typeWeapon === WEAPON_TYPE.WEAPON0) {
+            if (this.#weapon0Image === null) {
+                const image = new Image();
+                image.src = './assets/weapon0.png';
+                image.addEventListener('load', () => {
+                    this.#weapon0Image = image;
+                    this.#context.drawImage(this.#weapon0Image, this.#cellSize * newWeapon.x, this.#cellSize * newWeapon.y);
+                }, false);
+                return;
+            }
+            this.#context.drawImage(this.#weapon0Image, this.#cellSize * newWeapon.x, this.#cellSize * newWeapon.y);
+        }
         if (newWeapon.typeWeapon === WEAPON_TYPE.WEAPON1) {
             if (this.#weapon1Image === null) {
                 const image = new Image();

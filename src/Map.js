@@ -20,16 +20,12 @@ class Map {
         this.#height = height;
     }
 
-    // setNextTurn() {
-    //     if (this.currentPlayer == PLAYER_TYPE.PLAYER1){
-    //         this.currentPlayer = PLAYER_TYPE.PLAYER2;
-    //         this.currentEnemy = PLAYER_TYPE.PLAYER1;
-    //     }
-    //     else if (this.currentPlayer == PLAYER_TYPE.PLAYER2) {
-    //         this.currentPlayer = PLAYER_TYPE.PLAYER1;
-    //         this.currentEnemy = PLAYER_TYPE.PLAYER2;
-    //     }
-    // }
+    setNextTurn() {
+        this.removeMoveCells();
+        this.#currentPlayer = this.#currentPlayer.typePlayer === PLAYER_TYPE.PLAYER1 ? this.#players[1] : this.#players[0];
+        this.initMoves(this.#currentPlayer);
+        this.#mapDisplayer.drawMap(this.#listCells);
+    }
 
     addCell (x, y, type) {
         this.#listCells[this.#curListIndex] = {
@@ -89,6 +85,10 @@ class Map {
                 this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
                 this.#mapDisplayer.drawMove(newMove);
             }
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.WEAPON)
+            {
+                this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
+            }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)
             {
@@ -105,6 +105,10 @@ class Map {
                 this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
                 this.#mapDisplayer.drawMove(newMove);
             }
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.WEAPON)
+            {
+                this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
+            }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
                 break;
@@ -119,6 +123,10 @@ class Map {
             {
                     this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
                     this.#mapDisplayer.drawMove(newMove);
+            }
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.WEAPON)
+            {
+                this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
             }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
@@ -135,6 +143,10 @@ class Map {
                 this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
                 this.#mapDisplayer.drawMove(newMove);
             }
+            if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.WEAPON)
+            {
+                this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
+            }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
                 break;
@@ -142,33 +154,42 @@ class Map {
         }
     }
 
-    // switchWeapon() {
-    //     for (let x = 0; x < this.#listCells.length; x++) {
-    //         for (let y = 0; y < this.#listCells.length; y++) {
-    //             if (this.#listCells.length[x][y] === this.#currentPlayer.move(x, y) && this.#listCells.length.weapon != null) {
-    //                 let weaponBuffer = this.#listCells.length[x][y].weapon;
-    //                 this.#listCells.length[x][y].weapon = this.#currentPlayer.weapon;
-    //                 this.#currentPlayer.weapon = weaponBuffer;
-    //             }
-    //         }
-    //     }
-    // }
-
     moveCurrentPlayer (x, y) {
         const oldX = this.#currentPlayer.x;
         const oldY = this.#currentPlayer.y;
 
+        // si c'est une case  type move (orange)
         if (!this.#currentPlayer.canMoveTo(x, y)){
             return false;
         }
+
+        // si currentPlayer possede une ancienne arme il va la deposer a la old position du joueur & remettre le
+        // old weapon du joueur a null
+        if (this.#currentPlayer.oldWeapon) {
+            this.#listCells[(oldY * this.#width) + oldX] = this.#currentPlayer.oldWeapon;
+            this.#currentPlayer.clearOldWeapon();
+        } else {
+            // si il n'a pas dancienne arme, il va mettre une case vide
+            this.#listCells[(oldY * this.#width) + oldX] = {
+                cellId: this.#listCells[(oldY * this.#width) + oldX].cellId,
+                type: CELL_TYPES.EMPTYCELL,
+                x: oldX,
+                y: oldY,
+            };
+        }
+
+        // on va verifier si la case ou on a cliquer est du type weapon
+        if (this.#currentPlayer.canPickUp(x, y)){
+            // on va changer d'arme
+            this.#currentPlayer.changeWeapon(this.#listCells[y * this.#width + x])
+        }
+
         this.#currentPlayer.move(x, y);
         this.#listCells[(y * this.#width) + x] = this.#currentPlayer;
-        this.#listCells[(oldY * this.#width) + oldX] = {
-            cellId: this.#listCells[(oldY * this.#width) + oldX].cellId,
-            type: CELL_TYPES.EMPTYCELL,
-            x: oldX,
-            y: oldY,
-        };
+        this.setNextTurn();
+    }
+
+    removeMoveCells(){
         for(let i = 0; i < this.#listCells.length; i++){
             if (this.#listCells[i].type === CELL_TYPES.MOVE){
                 this.#listCells[i] = {
@@ -179,10 +200,6 @@ class Map {
                 };
             }
         }
-        this.#currentPlayer = this.#currentPlayer.typePlayer === PLAYER_TYPE.PLAYER1 ? this.#players[1] : this.#players[0];
-        console.log(this.#players);
-        this.initMoves(this.#currentPlayer);
-        this.#mapDisplayer.drawMap(this.#listCells);
     }
 
     createMap() {

@@ -20,6 +20,7 @@ const PLAYER_TYPE = {
 }
 
 const WEAPON_TYPE = {
+    WEAPON0 : 'weapon0',
     WEAPON1 : 'weapon1',
     WEAPON2 : 'weapon2',
     WEAPON3 : 'weapon3',
