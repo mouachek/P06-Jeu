@@ -21,8 +21,8 @@ class Weapon {
         this.#isPickable = false;
     }
 
-    static clone(weapon) {
-        return new Weapon(null, weapon.typeWeapon, weapon.x, weapon.y)
+    clone() {
+        return new Weapon(null, this.typeWeapon, this.x, this.y)
     }
 
     setPosition(x, y){

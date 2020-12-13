@@ -33,9 +33,9 @@ class Player{
     }
 
     changeWeapon(newWeapon){
-        this.#oldWeapon = Weapon.clone(this.#weapon);
+        this.#oldWeapon = this.#weapon.clone();
         this.#oldWeapon.setPosition(newWeapon.x, newWeapon.y);
-        this.#weapon = Weapon.clone(newWeapon);
+        this.#weapon = newWeapon.clone();
     }
 
     clearOldWeapon() {

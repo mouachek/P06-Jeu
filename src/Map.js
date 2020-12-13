@@ -29,7 +29,6 @@ class Map {
 
     addCell (x, y, type) {
         this.#listCells[this.#curListIndex] = {
-            cellId: this.#curListIndex,
             type,
             x,
             y,
@@ -171,7 +170,6 @@ class Map {
         } else {
             // si il n'a pas dancienne arme, il va mettre une case vide
             this.#listCells[(oldY * this.#width) + oldX] = {
-                cellId: this.#listCells[(oldY * this.#width) + oldX].cellId,
                 type: CELL_TYPES.EMPTYCELL,
                 x: oldX,
                 y: oldY,
@@ -193,7 +191,6 @@ class Map {
         for(let i = 0; i < this.#listCells.length; i++){
             if (this.#listCells[i].type === CELL_TYPES.MOVE){
                 this.#listCells[i] = {
-                    cellId: this.#listCells[i].cellId,
                     type: CELL_TYPES.EMPTYCELL,
                     x: this.#listCells[i].x,
                     y: this.#listCells[i].y,
