@@ -34,6 +34,26 @@ class Player{
         return this.#positionManager.checkCellType(x, y, CELL_TYPES.WEAPON)
     }
 
+    isTouched(damage) {
+        if (this.defense == true){
+            this.health = this.health - (damage/2);
+            this.defense = false;
+        }
+        else {
+            this.health = this.health - damage;
+        }
+    }
+
+    defend() {
+        this.defense = true;
+        return this.defense;
+    }
+
+    fight(victim) {
+        victim.isTouched(this.weapon.damage);
+        return true;
+    }
+
     changeWeapon(newWeapon){
         this.#oldWeapon = this.#weapon.clone();
         this.#oldWeapon.setPosition(newWeapon.x, newWeapon.y);

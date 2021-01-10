@@ -20,8 +20,12 @@ class Map {
         this.#height = height;
     }
 
-    setNextTurn() {
+    clearTurn (){
         this.removeMoveCells();
+        this.#mapDisplayer.drawMap(this.#listCells);
+    }
+
+    setNextTurn() {
         this.#currentPlayer = this.#currentPlayer.typePlayer === PLAYER_TYPE.PLAYER1 ? this.#players[1] : this.#players[0];
         this.initMoves(this.#currentPlayer);
         this.#mapDisplayer.drawMap(this.#listCells);
@@ -184,6 +188,11 @@ class Map {
 
         this.#currentPlayer.move(x, y);
         this.#listCells[(y * this.#width) + x] = this.#currentPlayer;
+        if (this.#positionManager.isPlayerAroundMe(x, y)){
+            this.clearTurn();
+            return;
+        }
+        this.clearTurn();
         this.setNextTurn();
     }
 
