@@ -7,9 +7,35 @@
     <title>POKEMON BATTLE</title>
   </head>
   <body>
-    <h1>POKEMON BATTLE</h1>
+    <img id="logoDisplay" src="./assets/logo.png" alt="Joueur 1"/>
     <div id="container">
+      <div id="p1Zone">
+        <h2>Joueur 1</h2>
+        <div id="player1Name"></div>
+        <img id="player1Display" src="./assets/player1.png" alt="Joueur 1"/>
+        <h3>Points de vie</h3>
+        <div id="player1Health">100</div>
+        <h3>Arme</h3>
+        <div id="player1Weapon">
+          <img src="./assets/weapon0.png" alt="weapon"/>
+        </div>
+        <h3>Dégats</h3>
+        <div id="player1Strength">10</div>
+      </div>
       <canvas id="plateau"></canvas>
+      <div id="p2Zone">
+        <h2>Joueur 2</h2>
+        <div id="player2Name"></div>
+        <img id="player2Display" src="./assets/player2.png" alt="Joueur 2"/>
+        <h3>Points de vie</h3>
+        <div id="player2Health">100</div>
+        <h3>Arme</h3>
+        <div id="player2Weapon">
+          <img src="./assets/weapon0.png" alt="weapon"/>
+        </div>
+        <h3>Dégats</h3>
+        <div id="player2Strength">10</div>
+      </div>
     </div>
     <script src="src/types/CellTypes.js"></script>
     <script src="src/PositionManager.js"></script>

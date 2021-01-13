@@ -7,6 +7,7 @@ class Player{
     #weapon;
     #oldWeapon;
     #lifePoint;
+    #defense;
 
     constructor(positionManager, typePlayer) {
         const position = positionManager.getPlayerPosition();
@@ -18,6 +19,8 @@ class Player{
         this.#weapon = new Weapon(null, WEAPON_TYPE.WEAPON0, this.#x, this.#y)
         this.#oldWeapon = null;
         this.#lifePoint = 100;
+        this.#defense = false;
+
     }
 
     move(x, y){
@@ -35,22 +38,22 @@ class Player{
     }
 
     isTouched(damage) {
-        if (this.defense == true){
-            this.health = this.health - (damage/2);
-            this.defense = false;
+        if (this.#defense === true){
+            this.#lifePoint = this.#lifePoint - (damage/2);
+            this.#defense = false;
         }
         else {
-            this.health = this.health - damage;
+            this.lifePoint = this.lifePoint - damage;
         }
     }
 
     defend() {
-        this.defense = true;
-        return this.defense;
+        this.#defense = true;
+        return this.#defense;
     }
 
     fight(victim) {
-        victim.isTouched(this.weapon.damage);
+        victim.isTouched(this.#weapon.damage);
         return true;
     }
 

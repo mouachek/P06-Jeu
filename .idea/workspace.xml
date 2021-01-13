@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2ad8f81f-00d8-41c5-b530-2d798cb27832" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PositionManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PositionManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,9 +35,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -78,24 +83,18 @@
       <workItem from="1606926708040" duration="5402000" />
       <workItem from="1607866496480" duration="67000" />
       <workItem from="1607866591449" duration="9740000" />
+      <workItem from="1610298905895" duration="27000" />
+      <workItem from="1610555896590" duration="545000" />
+      <workItem from="1610569225743" duration="1961000" />
+      <workItem from="1610573358484" duration="1659000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607866601760">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1440.900@0.0.1440.900" timestamp="1607866601760" />
-    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1607877151006">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1607877151006" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1607867972116">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1607867972116" />
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
