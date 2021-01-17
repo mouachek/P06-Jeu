@@ -27,8 +27,6 @@ class Map {
 
     setNextTurn() {
         this.#currentPlayer = this.#currentPlayer.typePlayer === PLAYER_TYPE.PLAYER1 ? this.#players[1] : this.#players[0];
-        this.initMoves(this.#currentPlayer);
-        this.#mapDisplayer.drawMap(this.#listCells);
     }
 
     addCell (x, y, type) {
@@ -184,15 +182,46 @@ class Map {
         if (this.#currentPlayer.canPickUp(x, y)){
             // on va changer d'arme
             this.#currentPlayer.changeWeapon(this.#listCells[y * this.#width + x])
+            this.#mapDisplayer.updatePlayerInfos(this.#currentPlayer);
         }
 
         this.#currentPlayer.move(x, y);
         this.#listCells[(y * this.#width) + x] = this.#currentPlayer;
         if (this.#positionManager.isPlayerAroundMe(x, y)){
             this.clearTurn();
+            this.startFightMode();
             return;
         }
         this.clearTurn();
+        this.setNextTurn();
+        this.initMoves(this.#currentPlayer);
+        this.#mapDisplayer.drawMap(this.#listCells);
+    }
+
+    startFightMode(){
+        document.getElementById('attack').style.display = 'block';
+        document.getElementById('defense').style.display = 'block';
+        document.getElementById('attack').addEventListener('click', this.attack.bind(this), false);
+        document.getElementById('defense').addEventListener('click', this.defense.bind(this), false);
+    }
+
+    attack (){
+        const victim = this.#players[0].typePlayer === this.#currentPlayer.typePlayer ? this.#players[1] : this.#players[0];
+        this.#currentPlayer.fight(victim);
+        this.#mapDisplayer.updatePlayerInfos(victim);
+        if(victim.lifePoint === 0){
+            // execution au prochain tour de priorite
+            const intervalId = setInterval(() => {
+                alert('jeu terminer stop joueur adverse a gagné')
+                window.clearInterval(intervalId);
+                window.location.reload();
+            })
+        }
+        this.setNextTurn();
+    }
+
+    defense (){
+        this.#currentPlayer.defend();
         this.setNextTurn();
     }
 
@@ -217,6 +246,8 @@ class Map {
         this.initWeapon(WEAPON_TYPE.WEAPON2);
         this.initWeapon(WEAPON_TYPE.WEAPON3);
         this.initMoves(this.#currentPlayer);
+        this.#mapDisplayer.updatePlayerInfos(this.#players[0]);
+        this.#mapDisplayer.updatePlayerInfos(this.#players[1]);
         console.log(this.#listCells);
     }
 }

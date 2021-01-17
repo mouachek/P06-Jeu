@@ -43,7 +43,10 @@ class Player{
             this.#defense = false;
         }
         else {
-            this.lifePoint = this.lifePoint - damage;
+            this.#lifePoint = this.lifePoint - damage;
+        }
+        if (this.#lifePoint < 0) {
+            this.#lifePoint = 0;
         }
     }
 
@@ -87,5 +90,8 @@ class Player{
     }
     get type() {
         return this.#type;
+    }
+    get lifePoint() {
+        return this.#lifePoint;
     }
 }

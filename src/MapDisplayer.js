@@ -168,4 +168,24 @@ class MapDisplayer {
         }
         this.#context.drawImage(this.#moveImage, this.#cellSize * newMove.x, this.#cellSize * newMove.y);
     }
+
+    updatePlayerInfos(player){
+        const targetPlayer = player.typePlayer === PLAYER_TYPE.PLAYER1 ? '1' : '2';
+        document.getElementById(`player${targetPlayer}LifePoints`).innerHTML = player.lifePoint;
+        document.getElementById(`player${targetPlayer}Damage`).innerHTML = player.weapon.damage;
+        switch (player.weapon.typeWeapon){
+            case WEAPON_TYPE.WEAPON0:
+                document.getElementById(`player${targetPlayer}Weapon`).src = './assets/weapon0.png';
+                break;
+            case WEAPON_TYPE.WEAPON1:
+                document.getElementById(`player${targetPlayer}Weapon`).src = './assets/weapon1.png';
+                break;
+            case WEAPON_TYPE.WEAPON2:
+                document.getElementById(`player${targetPlayer}Weapon`).src = './assets/weapon2.png';
+                break;
+            case WEAPON_TYPE.WEAPON3:
+                document.getElementById(`player${targetPlayer}Weapon`).src = './assets/weapon3.png';
+                break;
+        }
+    }
 }

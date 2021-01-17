@@ -68,4 +68,7 @@ class Weapon {
     get type() {
         return this.#type;
     }
+    get damage() {
+        return this.#damage;
+    }
 }
