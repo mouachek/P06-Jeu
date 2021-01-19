@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <meta charset="UTF-8" />
     <title>POKEMON BATTLE</title>
   </head>
   <body>
     <img id="logoDisplay" src="./assets/logo.png" alt="Joueur 1"/>
+    <div class="containerButton">
+      <button id="attack">Attaquer</button>
+      <button id="defense">Se defendre</button>
+      <button id="howToPlay" onclick="alert('Cliquez sur les cases surlignées en orange pour vous déplacer, passez sur une case contenant un pokemon pour le capturer et changer d\'arme. Lorsque que vous etes a coté de votre adversaire, vous pouvez choisir de vous battre ou de vous défendre. Dès que l\'un des joueurs a 0 points de vie, la partie se termine !')">Comment Jouer ?</button>
+    </div>
     <div id="container">
-      <div id="p1Zone">
+      <div id="p1Info">
         <h2>Joueur 1</h2>
         <div id="player1Name"></div>
         <img id="player1Display" src="./assets/player1.png" alt="Joueur 1"/>
@@ -23,7 +27,7 @@
         <div id="player1Damage"></div>
       </div>
       <canvas id="plateau"></canvas>
-      <div id="p2Zone">
+      <div id="p2Info">
         <h2>Joueur 2</h2>
         <div id="player2Name"></div>
         <img id="player2Display" src="./assets/player2.png" alt="Joueur 2"/>
@@ -35,14 +39,6 @@
         </div>
         <h3>Dégats</h3>
         <div id="player2Damage"></div>
-      </div>
-      <div>
-        <button id="attack" />
-        attackkkk !!!
-      </div>
-      <div>
-        <button id="defense" />
-        defenseeee
       </div>
     </div>
     <script src="src/types/CellTypes.js"></script>

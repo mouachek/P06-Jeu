@@ -199,8 +199,8 @@ class Map {
     }
 
     startFightMode(){
-        document.getElementById('attack').style.display = 'block';
-        document.getElementById('defense').style.display = 'block';
+        document.getElementById('attack').style.display = 'flex';
+        document.getElementById('defense').style.display = 'flex';
         document.getElementById('attack').addEventListener('click', this.attack.bind(this), false);
         document.getElementById('defense').addEventListener('click', this.defense.bind(this), false);
     }
@@ -212,7 +212,7 @@ class Map {
         if(victim.lifePoint === 0){
             // execution au prochain tour de priorite
             const intervalId = setInterval(() => {
-                alert('jeu terminer stop joueur adverse a gagné')
+                alert('Bravo, tu as gagné contre ton adversaire ! Clique sur OK pour relancer une partie.')
                 window.clearInterval(intervalId);
                 window.location.reload();
             })
