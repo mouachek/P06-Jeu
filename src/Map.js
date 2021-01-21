@@ -202,7 +202,6 @@ class Map {
         document.getElementById('attack').style.display = 'flex';
         document.getElementById('defense').style.display = 'flex';
         document.getElementById("attack").addEventListener('click', function(e) {
-            console.log("attack");
             document.getElementById("song").play();
         });
         document.getElementById('attack').addEventListener('click', this.attack.bind(this), false);
@@ -252,6 +251,5 @@ class Map {
         this.initMoves(this.#currentPlayer);
         this.#mapDisplayer.updatePlayerInfos(this.#players[0]);
         this.#mapDisplayer.updatePlayerInfos(this.#players[1]);
-        console.log(this.#listCells);
     }
 }

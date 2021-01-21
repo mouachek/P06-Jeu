@@ -50,7 +50,6 @@ class PositionManager {
     getPlayerPosition() {
         const x = Math.floor(Math.random() * (this.#width));
         const y = Math.floor(Math.random() * (this.#height));
-        console.log(x, y);
         if (this.checkDirection(x, y, DIRECTION_TYPES.CURRENT, CELL_TYPES.EMPTYCELL)
             && !this.checkDirection(x, y, DIRECTION_TYPES.LEFT, CELL_TYPES.PLAYER)
             && !this.checkDirection(x, y, DIRECTION_TYPES.RIGHT, CELL_TYPES.PLAYER)

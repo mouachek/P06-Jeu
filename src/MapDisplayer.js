@@ -42,7 +42,6 @@ class MapDisplayer {
                     this.drawMove(listCells[i])
                     break;
                 case CELL_TYPES.WEAPON:
-                    console.log(' GONNA DRAW', listCells[i]);
                     this.drawWeapon(listCells[i])
                     break;
             }
