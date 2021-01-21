@@ -156,16 +156,8 @@ class MapDisplayer {
     }
 
     drawMove(newMove) {
-        if (this.#moveImage === null) {
-            const image = new Image();
-            image.src = './assets/cellMove.png';
-            image.addEventListener('load', () => {
-                this.#moveImage = image;
-                this.#context.drawImage(this.#moveImage, this.#cellSize * newMove.x, this.#cellSize * newMove.y);
-            }, false);
-            return;
-        }
-        this.#context.drawImage(this.#moveImage, this.#cellSize * newMove.x, this.#cellSize * newMove.y);
+        this.#context.fillStyle = "#eecd82";
+        this.#context.fillRect(this.#cellSize * newMove.x, this.#cellSize * newMove.y, 60, 60);
     }
 
     updatePlayerInfos(player){

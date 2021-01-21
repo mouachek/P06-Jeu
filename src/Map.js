@@ -89,6 +89,7 @@ class Map {
             if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.WEAPON)
             {
                 this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
+                this.#mapDisplayer.drawMove(newMove);
             }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)
@@ -109,6 +110,7 @@ class Map {
             if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.WEAPON)
             {
                 this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
+                this.#mapDisplayer.drawMove(newMove);
             }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
@@ -128,6 +130,7 @@ class Map {
             if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.WEAPON)
             {
                 this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
+                this.#mapDisplayer.drawMove(newMove);
             }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
@@ -147,6 +150,7 @@ class Map {
             if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.WEAPON)
             {
                 this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
+                this.#mapDisplayer.drawMove(newMove);
             }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
