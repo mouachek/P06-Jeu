@@ -11,7 +11,6 @@ class MapDisplayer {
     #weapon1Image = null;
     #weapon2Image = null;
     #weapon3Image = null;
-    #moveImage = null;
     #map;
 
     constructor(width, height, map) {
