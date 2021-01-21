@@ -201,6 +201,10 @@ class Map {
     startFightMode(){
         document.getElementById('attack').style.display = 'flex';
         document.getElementById('defense').style.display = 'flex';
+        document.getElementById("attack").addEventListener('click', function(e) {
+            console.log("attack");
+            document.getElementById("song").play();
+        });
         document.getElementById('attack').addEventListener('click', this.attack.bind(this), false);
         document.getElementById('defense').addEventListener('click', this.defense.bind(this), false);
     }

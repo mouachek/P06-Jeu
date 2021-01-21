@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <head>
     <link rel="stylesheet" href="index.css" />
     <meta charset="UTF-8" />
@@ -12,6 +13,9 @@
       <button id="defense">Se defendre</button>
       <button id="howToPlay" onclick="alert('Cliquez sur les cases surlignées en orange pour vous déplacer, passez sur une case contenant un pokemon pour le capturer et changer d\'arme. Lorsque que vous etes a coté de votre adversaire, vous pouvez choisir de vous battre ou de vous défendre. Dès que l\'un des joueurs a 0 points de vie, la partie se termine !')">Comment Jouer ?</button>
     </div>
+    <audio id="song">
+      <source src="./assets/pokemonFight.mp3" type="audio/mpeg">
+    </audio>
     <div id="container">
       <div id="p1Info">
         <h2>Joueur 1</h2>
