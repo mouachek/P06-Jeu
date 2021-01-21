@@ -90,6 +90,7 @@ class Map {
             {
                 this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
                 this.#mapDisplayer.drawMove(newMove);
+                this.#mapDisplayer.drawWeapon(this.#listCells[(newMove.y * this.#width) + newMove.x]);
             }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)
@@ -111,6 +112,7 @@ class Map {
             {
                 this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
                 this.#mapDisplayer.drawMove(newMove);
+                this.#mapDisplayer.drawWeapon(this.#listCells[(newMove.y * this.#width) + newMove.x]);
             }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
@@ -131,6 +133,7 @@ class Map {
             {
                 this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
                 this.#mapDisplayer.drawMove(newMove);
+                this.#mapDisplayer.drawWeapon(this.#listCells[(newMove.y * this.#width) + newMove.x]);
             }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
@@ -151,6 +154,7 @@ class Map {
             {
                 this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
                 this.#mapDisplayer.drawMove(newMove);
+                this.#mapDisplayer.drawWeapon(this.#listCells[(newMove.y * this.#width) + newMove.x]);
             }
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)            {
@@ -198,8 +202,8 @@ class Map {
         }
         this.clearTurn();
         this.setNextTurn();
-        this.initMoves(this.#currentPlayer);
         this.#mapDisplayer.drawMap(this.#listCells);
+        this.initMoves(this.#currentPlayer);
     }
 
     startFightMode(){
