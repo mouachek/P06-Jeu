@@ -157,7 +157,7 @@ class MapDisplayer {
 
     drawMove(newMove) {
         this.#context.fillStyle = "#eecd82";
-        this.#context.fillRect(this.#cellSize * newMove.x, this.#cellSize * newMove.y, 60, 60);
+        this.#context.fillRect(this.#cellSize * newMove.x, this.#cellSize * newMove.y, 58, 59);
     }
 
     updatePlayerInfos(player){
