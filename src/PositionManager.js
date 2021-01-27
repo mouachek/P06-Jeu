@@ -14,7 +14,7 @@ class PositionManager {
     }
 
     checkBoundaries(position) {
-        return position >= 0 && position < this.#width * this.#height;
+        return position >= 0 && position < this.#width * this.#height; // detecter les bords du plateau
     }
 
     checkDirection(x, y, direction, cell, distance = 1) {
@@ -34,6 +34,8 @@ class PositionManager {
         if (direction === DIRECTION_TYPES.CURRENT) {
             return this.#listCells[(y * this.#width) + x].type === cell
         }
+
+        // checker x et y du joueur
 
         return false;
     }
@@ -59,6 +61,7 @@ class PositionManager {
             return {x, y};
         }
         return this.getPlayerPosition();
+        // on verifie si les cases du joueur ne sont pas undefined
     }
 
     getCell(x, y) {

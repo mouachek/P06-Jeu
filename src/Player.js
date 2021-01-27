@@ -34,7 +34,7 @@ class Player{
     }
 
     canPickUp(x, y){
-        return this.#positionManager.checkCellType(x, y, CELL_TYPES.WEAPON)
+        return this.#positionManager.checkCellType(x, y, CELL_TYPES.WEAPON) // on verifie le type de la case
     }
 
     isTouched(damage) {
@@ -42,12 +42,14 @@ class Player{
             this.#lifePoint = this.#lifePoint - (damage/2);
             this.#defense = false;
         }
+        // si la defense est activé je divise par 2
         else {
             this.#lifePoint = this.lifePoint - damage;
         }
         if (this.#lifePoint < 0) {
             this.#lifePoint = 0;
         }
+        // je desactive la vie negative
     }
 
     defend() {

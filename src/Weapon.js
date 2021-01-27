@@ -19,7 +19,7 @@ class Weapon {
         this.#type = CELL_TYPES.WEAPON;
         this.#typeWeapon = typeWeapon;
 
-        this.#isPickable = false;
+        this.#isPickable = false; // pour qu'on ne puisse pas recuperer des armes qui ne se trouve pas sur notre chemin
 
         switch (this.typeWeapon) {
             case WEAPON_TYPE.WEAPON0:

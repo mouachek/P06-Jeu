@@ -156,16 +156,18 @@ class MapDisplayer {
 
     drawMove(newMove) {
         this.#context.fillStyle = "#eecd82";
-        this.#context.fillRect(this.#cellSize * newMove.x, this.#cellSize * newMove.y, 58, 59);
+        this.#context.fillRect(this.#cellSize * newMove.x, this.#cellSize * newMove.y, 58, 59); // creation en canvas du filtre orange move
     }
 
     updatePlayerInfos(player){
         const targetPlayer = player.typePlayer === PLAYER_TYPE.PLAYER1 ? '1' : '2';
+        // curentplayer
         document.getElementById(`player${targetPlayer}LifePoints`).innerHTML = player.lifePoint;
         document.getElementById(`player${targetPlayer}Damage`).innerHTML = player.weapon.damage;
         switch (player.weapon.typeWeapon){
             case WEAPON_TYPE.WEAPON0:
                 document.getElementById(`player${targetPlayer}Weapon`).src = './assets/weapon0.png';
+                // je change l'image de la div html
                 break;
             case WEAPON_TYPE.WEAPON1:
                 document.getElementById(`player${targetPlayer}Weapon`).src = './assets/weapon1.png';

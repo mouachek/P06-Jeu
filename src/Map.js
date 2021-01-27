@@ -51,6 +51,7 @@ class Map {
                 x = 0;
                 y++;
             }
+            // passer a la ligne suivante
         }
     }
 
@@ -86,17 +87,20 @@ class Map {
                 this.#listCells[(newMove.y * this.#width) + newMove.x] = newMove;
                 this.#mapDisplayer.drawMove(newMove);
             }
+            // si la case est vide je peux me deplacer dessus
             if (this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.WEAPON)
             {
                 this.#listCells[(newMove.y * this.#width) + newMove.x].makePickable();
                 this.#mapDisplayer.drawMove(newMove);
                 this.#mapDisplayer.drawWeapon(this.#listCells[(newMove.y * this.#width) + newMove.x]);
             }
+            // si la case posede une arme je peux me deplacer dessus et la ramasser
             if(this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.OBSTACLE
                 || this.#listCells[(newMove.y * this.#width) + newMove.x].type === CELL_TYPES.PLAYER)
             {
                 break;
             }
+            // si il y a un obstacle ou un joueur je sors de la boucle
         }
         for(let i = 1; i <= 3; i++) {
             if (player.y + i >= this.#height){
@@ -172,13 +176,13 @@ class Map {
             return false;
         }
 
-        // si currentPlayer possede une ancienne arme il va la deposer a la old position du joueur & remettre le
+        // si currentPlayer possede une ancienne arme il va la deposer a la old position du joueur & remettre la
         // old weapon du joueur a null
         if (this.#currentPlayer.oldWeapon) {
             this.#listCells[(oldY * this.#width) + oldX] = this.#currentPlayer.oldWeapon;
             this.#currentPlayer.clearOldWeapon();
         } else {
-            // si il n'a pas dancienne arme, il va mettre une case vide
+            // si il n'a pas dancienne arme, on va mettre une case vide
             this.#listCells[(oldY * this.#width) + oldX] = {
                 type: CELL_TYPES.EMPTYCELL,
                 x: oldX,
@@ -200,6 +204,7 @@ class Map {
             this.startFightMode();
             return;
         }
+        // si un joueur est a cote , je lance le combat
         this.clearTurn();
         this.setNextTurn();
         this.#mapDisplayer.drawMap(this.#listCells);
@@ -218,10 +223,13 @@ class Map {
 
     attack (){
         const victim = this.#players[0].typePlayer === this.#currentPlayer.typePlayer ? this.#players[1] : this.#players[0];
+        // on detecte quel joueur est la victime
         this.#currentPlayer.fight(victim);
         this.#mapDisplayer.updatePlayerInfos(victim);
+        // on met a jour les infos du joueur au fur et a mesure
+        // si la vie du joueur arrive a 0 je stop le jeu
         if(victim.lifePoint === 0){
-            // execution au prochain tour de priorite
+            // execution au prochain tour de priorite car sinon l'alert s'active avant laffichage des points de vies
             const intervalId = setInterval(() => {
                 alert('Bravo, tu as gagné contre ton adversaire ! Clique sur OK pour relancer une partie.')
                 window.clearInterval(intervalId);
@@ -250,14 +258,20 @@ class Map {
 
     createMap() {
         this.initBoard()
+        // j'affiche le plateau
         this.initObstacles();
+        // j'affiche les obstacles
         this.#players = [this.initPlayer(PLAYER_TYPE.PLAYER1), this.initPlayer(PLAYER_TYPE.PLAYER2)];
         this.#currentPlayer = this.#players[0];
+        // joeur par defaut numero 1
         this.initWeapon(WEAPON_TYPE.WEAPON1);
         this.initWeapon(WEAPON_TYPE.WEAPON2);
         this.initWeapon(WEAPON_TYPE.WEAPON3);
+        // j'affiche les armes
         this.initMoves(this.#currentPlayer);
+        // deplacement
         this.#mapDisplayer.updatePlayerInfos(this.#players[0]);
         this.#mapDisplayer.updatePlayerInfos(this.#players[1]);
+        // j'actualise les infos du joueur
     }
 }
